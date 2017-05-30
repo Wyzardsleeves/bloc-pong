@@ -7,23 +7,51 @@ body{
 
 }
 
+.top-part{
+    line-height: 5px;
+}
+
+.score-keep{
+    text-align: center;
+}
+.score-keep h5, .score-keep h4{
+    display: inline;
+    font-size: 30px;
+}
+.score-keep h5:first-child{color: blue}
+.score-keep h5:last-child{color: red}
+
 #field canvas{
     padding-left: 0;
     padding-right: 0;
     margin-left: auto;
     margin-right: auto;
-    /*
-    width: 1200px; 
-    height: 650px;
-    */
     display: block;
     background-color: black;
     border: 5px solid rgba(200, 200, 200, 0.6);
 }
 
+.announcements{
+    font-size: 35px;
+    color: darkgreen;
+    text-align: center;
+    line-height: 0px;
+    padding: 0;
+}
+
+.announcements h5{
+    padding: 15px;
+    margin: 5px;
+    line-height: 10px;
+}
+
 .info span{
     font-size: 22px;
     color: grey;
+}
+
+.legend{
+    line-height: 5px;
 }
 
 .legend h5{
@@ -44,4 +72,8 @@ body{
 
 .legend h5:last-child span{
     color: red;
+}
+
+.bottom-part{
+    line-height: 20px;
 }

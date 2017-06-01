@@ -3,7 +3,7 @@ var animate = window.requestAnimationFrame || window.webkitRequestAnimationFrame
 
 var canvas = document.getElementById('mainCanvas');
 var width = 1200;
-var height = 625;
+var height = 650;
 canvas.width = width;
 canvas.height = height;
 var context = canvas.getContext('2d');
@@ -136,10 +136,10 @@ Paddle.prototype.move = function(x, y){
 Ball.prototype.update = function(paddle1, paddle2){
     this.x -= this.x_speed;
     this.y += this.y_speed;
-    var right_x = this.x - 5;
-    var right_y = this.y - 5;
-    var left_x = this.x + 5;
-    var left_y = this.y + 5;
+    var right_x = this.x - 15;
+    var right_y = this.y - 15;
+    var left_x = this.x + 15;
+    var left_y = this.y + 15;
     
     if(this.y - 5 < 0){ //hitting bottom wall ("5" the buffer?)
         this.y = 5;
@@ -153,22 +153,18 @@ Ball.prototype.update = function(paddle1, paddle2){
         this.x_speed = 6;
         this.y_speed = 0;
         this.x = 600;
-        this.y = 300;
+        this.y = 325;
     }
     //bouncing off paddles
-    if(right_x > 600){
+    if(right_x < 600){  //player's paddle
         if(right_x < (paddle1.x + paddle1.height) && left_y > paddle1.y && right_x < (paddle1.x + paddle1.width) && left_x > paddle1.x){
-            //player's paddle
-            //this.x_speed = -6;
-            this.x_speed = 6;
+            this.x_speed = -6;
             this.y_speed += (paddle1.y_speed / 2);
             this.x += this.x_speed;
         }
-    }else{
-        if(right_x < (paddle2.y + paddle2.height) && left_y > paddle2.y && right_x < (paddle2.x + paddle2.width) && left_x > paddle2.x){
-            //computer's paddle
-            //this.x_speed = 6;
-            this.x_speed = -6;
+    }else{  //computer's paddle
+        if(right_x > (paddle2.y + paddle2.height) && left_y > paddle2.y && right_x < (paddle2.x + paddle2.width) && left_x > paddle2.x){
+            this.x_speed = 6;
             this.y_speed += (paddle2.y_speed / 2);
             this.x += this.x_speed;
         }
@@ -184,7 +180,7 @@ function Score(){
 Score.prototype.update = function(){
     if(ball.x > 1199){
         this.pScore++;
-        console.log(this.pScore)
+        console.log("The player's score increased to " + this.pScore)
         document.getElementsByClassName('score-keep')[0].getElementsByTagName('h5')[0].innerHTML = this.pScore;
         if(this.pScore <= 10){
             //player victory is going to go here
@@ -192,20 +188,10 @@ Score.prototype.update = function(){
     }
     if(ball.x < 1){
         this.cScore++;
-        console.log(this.cScore)
+        console.log("The computer's score increased to " + this.cScore)
         document.getElementsByClassName('score-keep')[0].getElementsByTagName('h5')[1].innerHTML = this.cScore;
         if(this.cScore <= 10){
             //computerWon();
         }
     }
 };
-
-/*
-var scoreKeep = function(){
-    //update player score
-    document.getElementsByClassName('score-keep')[0].getElementsByTagName('h5')[0].innerHTML = pScore;
-
-    //update computer score
-    document.getElementsByClassName('score-keep')[0].getElementsByTagName('h5')[1].innerHTML = cScore;
-}
-*/

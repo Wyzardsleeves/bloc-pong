@@ -11,8 +11,17 @@ body{
     line-height: 5px;
 }
 
+#mainCanvas{
+    /* stuff might go here */
+}
+
+.game-part{
+    line-height: 15px;
+}
+
 .score-keep{
     text-align: center;
+    padding: 0 0 5px 0;
 }
 .score-keep h5, .score-keep h4{
     display: inline;
@@ -66,14 +75,13 @@ body{
     font-size: 15px;
 }
 
-.legend h5:first-child span{
-    color: blue;
-}
-
-.legend h5:last-child span{
-    color: red;
-}
+.legend h5:first-child span{color: blue}
+.legend h5:last-child span{color: red}
 
 .bottom-part{
     line-height: 20px;
+    position: absolute;
+    float: center;
+    bottom: 0px;
+    width: 90%;
 }

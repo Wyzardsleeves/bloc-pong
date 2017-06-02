@@ -9,6 +9,7 @@ canvas.height = height;
 var context = canvas.getContext('2d');
 
 var update = function(){
+    computer.update(ball);
     player.update();
     ball.update(player.paddle, computer.paddle);
     score.update();
@@ -35,8 +36,8 @@ function Paddle(x, y, width, height) {
 }
 
 Paddle.prototype.render = function() {
-  context.fillStyle = "#0000FF";
-  context.fillRect(this.x, this.y, this.width, this.height);
+    context.fillStyle = "blue";
+    context.fillRect(this.x, this.y, this.width, this.height);
 };
 
 //makes a Player
@@ -115,6 +116,20 @@ Player.prototype.update = function(){
     }
 };
 
+//moving the computer paddle
+Computer.prototype.update = function(){
+    var y_loc = ball.y;
+    if(y_loc > this.paddle.y){   //up
+        this.paddle.y += 8;
+    }
+    if (y_loc < this.paddle.y){  //down
+        this.paddle.move(0, -8);
+    }
+    else {
+        this.paddle.move(0, 0);
+    }
+};
+
 Paddle.prototype.move = function(x, y){
     this.x += x;
     this.y += y;
@@ -178,20 +193,23 @@ function Score(){
 }
 
 Score.prototype.update = function(){
+
     if(ball.x > 1199){
         this.pScore++;
         console.log("The player's score increased to " + this.pScore)
         document.getElementsByClassName('score-keep')[0].getElementsByTagName('h5')[0].innerHTML = this.pScore;
-        if(this.pScore <= 10){
+        if(this.pScore >= 10){
             //player victory is going to go here
+            alert("You have won!");
         }
     }
     if(ball.x < 1){
         this.cScore++;
         console.log("The computer's score increased to " + this.cScore)
         document.getElementsByClassName('score-keep')[0].getElementsByTagName('h5')[1].innerHTML = this.cScore;
-        if(this.cScore <= 10){
-            //computerWon();
+        if(this.cScore >= 10){
+            //computer victory is going to go here
+            alert("Computer has won!");
         }
     }
 };

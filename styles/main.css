@@ -8,7 +8,7 @@ body{
 }
 
 .top-part{
-    line-height: 5px;
+    line-height: 0;
 }
 
 #mainCanvas{
@@ -21,7 +21,7 @@ body{
 
 .score-keep{
     text-align: center;
-    padding: 0 0 5px 0;
+    padding: 0 0 10px 0;
 }
 .score-keep h5, .score-keep h4{
     display: inline;

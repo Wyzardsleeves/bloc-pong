@@ -146,7 +146,6 @@ Paddle.prototype.move = function(x, y){
     }
 }
 
-
 //animations (top is right, bottom is left)
 Ball.prototype.update = function(paddle1, paddle2){
     this.x -= this.x_speed;
@@ -195,21 +194,36 @@ function Score(){
 Score.prototype.update = function(){
 
     if(ball.x > 1199){
-        this.pScore++;
-        console.log("The player's score increased to " + this.pScore)
-        document.getElementsByClassName('score-keep')[0].getElementsByTagName('h5')[0].innerHTML = this.pScore;
-        if(this.pScore >= 10){
-            //player victory is going to go here
-            alert("You have won!");
-        }
-    }
-    if(ball.x < 1){
-        this.cScore++;
-        console.log("The computer's score increased to " + this.cScore)
-        document.getElementsByClassName('score-keep')[0].getElementsByTagName('h5')[1].innerHTML = this.cScore;
-        if(this.cScore >= 10){
+        var reseteTest;
+        if(this.pScore == 10){
             //computer victory is going to go here
             alert("Computer has won!");
+            this.pScore = 0;
+            this.cScore = 0;
+            reseteTest = true;
         }
+        if(reseteTest != true){
+            this.pScore++;
+        }
+        console.log("The player's score increased to " + this.pScore)
+        var scoreElement = document.getElementsByClassName('score-keep')[0].getElementsByTagName('h5')[0];
+        scoreElement.innerHTML = this.pScore
+        
+    }
+    if(ball.x < 1){
+        var reseteTest;
+        if(this.cScore == 10){
+            //computer victory is going to go here
+            alert("Computer has won!");
+            this.pScore = 0;
+            this.cScore = 0;
+            reseteTest = true;
+        }
+        if(reseteTest != true){
+            this.cScore++;
+        }
+        console.log("The computer's score increased to " + this.cScore)
+        var scoreElement = document.getElementsByClassName('score-keep')[0].getElementsByTagName('h5')[1];
+        scoreElement.innerHTML = this.cScore;
     }
 };

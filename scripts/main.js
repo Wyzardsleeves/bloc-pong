@@ -154,7 +154,7 @@ Ball.prototype.update = function(paddle1, paddle2){
     var right_y = this.y - 15;
     var left_x = this.x + 15;
     var left_y = this.y + 15;
-    
+
     if(this.y - 5 < 0){ //hitting bottom wall ("5" the buffer?)
         this.y = 5;
         this.y_speed = -this.y_speed;
@@ -171,12 +171,15 @@ Ball.prototype.update = function(paddle1, paddle2){
     }
     //bouncing off paddles
     if(right_x < 600){  //player's paddle
-        if(right_x < (paddle1.x + paddle1.height) && left_y > paddle1.y && right_x < (paddle1.x + paddle1.width) && left_x > paddle1.x){
+        //if(right_x < (paddle1.y + paddle1.height) && left_y > paddle1.y && right_x < (paddle1.x + paddle1.width) && left_x > paddle1.x){
+        if(right_x < (paddle1.y + paddle1.height) && left_y > paddle1.y && right_x < (paddle1.x + paddle1.width) && left_x > paddle1.x){
             this.x_speed = -6;
             this.y_speed += (paddle1.y_speed / 2);
             this.x += this.x_speed;
         }
-    }else{  //computer's paddle
+    }
+    else{  //computer's paddle
+        //if(right_x > (paddle2.y + paddle2.height) && left_y > paddle2.y && right_x < (paddle2.x + paddle2.width) && left_x > paddle2.x){
         if(right_x > (paddle2.y + paddle2.height) && left_y > paddle2.y && right_x < (paddle2.x + paddle2.width) && left_x > paddle2.x){
             this.x_speed = 6;
             this.y_speed += (paddle2.y_speed / 2);
@@ -208,7 +211,7 @@ Score.prototype.update = function(){
         console.log("The player's score increased to " + this.pScore)
         var scoreElement = document.getElementsByClassName('score-keep')[0].getElementsByTagName('h5')[0];
         scoreElement.innerHTML = this.pScore
-        
+
     }
     if(ball.x < 1){
         var reseteTest;

@@ -21,6 +21,22 @@ body{
     /* stuff might go here */
 }
 
+.head-contents{
+  display: inline;
+}
+.head-contents img{
+  display: inline;
+  padding: 10px 15px 0 0;
+}
+.head-contents h3{
+  position: absolute;
+  display: inline;
+  margin: 35px 0 0 0;
+}
+.head-contents a{
+  display: inline;
+}
+
 .game-part{
     line-height: 15px;
 }

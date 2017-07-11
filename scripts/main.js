@@ -172,7 +172,7 @@ Ball.prototype.update = function(paddle1, paddle2){
     //bouncing off paddles
     if(right_x < 600){  //player's paddle
         //if(right_x < (paddle1.y + paddle1.height) && left_y > paddle1.y && right_x < (paddle1.x + paddle1.width) && left_x > paddle1.x){
-        if(right_x < (paddle1.y + paddle1.height) && left_y > paddle1.y && right_x < (paddle1.x + paddle1.width) && left_x > paddle1.x){
+        if(right_y < (paddle1.y + paddle1.height) && left_y > paddle1.y && right_x < (paddle1.x + paddle1.width) && left_x > paddle1.x){
             this.x_speed = -6;
             this.y_speed += (paddle1.y_speed / 2);
             this.x += this.x_speed;
@@ -180,7 +180,7 @@ Ball.prototype.update = function(paddle1, paddle2){
     }
     else{  //computer's paddle
         //if(right_x > (paddle2.y + paddle2.height) && left_y > paddle2.y && right_x < (paddle2.x + paddle2.width) && left_x > paddle2.x){
-        if(right_x > (paddle2.y + paddle2.height) && left_y > paddle2.y && right_x < (paddle2.x + paddle2.width) && left_x > paddle2.x){
+        if(right_y < (paddle2.y + paddle2.height) && left_y > paddle2.y && right_x < (paddle2.x + paddle2.width) && left_x > paddle2.x){
             this.x_speed = 6;
             this.y_speed += (paddle2.y_speed / 2);
             this.x += this.x_speed;

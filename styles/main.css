@@ -4,7 +4,13 @@ html{
 }
 
 body{
+  margin: 0 30px 0 30px;
+}
 
+.top-part img{
+  height: 50px;
+  margin: 0;
+  padding: 0;
 }
 
 .top-part{
@@ -38,20 +44,6 @@ body{
     display: block;
     background-color: black;
     border: 5px solid rgba(200, 200, 200, 0.6);
-}
-
-.announcements{
-    font-size: 35px;
-    color: darkgreen;
-    text-align: center;
-    line-height: 0px;
-    padding: 0;
-}
-
-.announcements h5{
-    padding: 15px;
-    margin: 5px;
-    line-height: 10px;
 }
 
 .info span{
